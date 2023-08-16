@@ -3,6 +3,7 @@ from asyncio import sleep
 from typing import Any
 
 from litestar import Litestar, get
+import uvicorn
 
 
 @get("/async")
@@ -19,3 +20,6 @@ def sync_hello_world() -> dict[str, Any]:
 
 
 app = Litestar(route_handlers=[sync_hello_world, async_hello_world])
+
+if __name__ == "__main__":
+    uvicorn.run(app)
